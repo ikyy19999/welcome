@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang | NamaDomain.com</title>
+    <title>Welcome</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -18,10 +18,9 @@
             --secondary: #8b5cf6;
             --accent: #ec4899;
             --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
             --dark: #0f172a;
             --light: #f8fafc;
+            --grid-bg: #1e293b;
         }
 
         body {
@@ -33,7 +32,7 @@
             overflow-x: hidden;
         }
 
-        /* Simple Navbar */
+        /* Navbar */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -57,14 +56,14 @@
         .container {
             flex: 1;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             padding: 2rem;
             gap: 2rem;
         }
 
         .welcome-section {
-            max-width: 600px;
+            max-width: 500px;
             z-index: 2;
         }
 
@@ -131,160 +130,147 @@
             text-decoration: underline;
         }
 
-        /* Game Section */
-        .game-section {
+        /* Pixel Art Section */
+        .pixel-art-section {
             background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 2rem;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(148, 163, 184, 0.1);
         }
 
-        .game-header {
+        .pixel-art-header {
             text-align: center;
             margin-bottom: 1.5rem;
         }
 
-        .game-header h2 {
+        .pixel-art-header h2 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
 
-        .game-header p {
+        .pixel-art-header p {
             color: #94a3b8;
             font-size: 0.9rem;
         }
 
-        /* Reaction Game */
-        .reaction-game {
-            text-align: center;
-        }
-
-        .game-screen {
-            height: 300px;
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 15px;
+        /* Tools */
+        .tools {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(148, 163, 184, 0.2);
-        }
-
-        .start-screen {
-            padding: 2rem;
-        }
-
-        .start-screen h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .start-screen p {
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-
-        .game-element {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            position: absolute;
-        }
-
-        .game-element:hover {
-            transform: scale(1.1);
-        }
-
-        .ready-element {
-            background: linear-gradient(45deg, var(--warning), #f97316);
-            animation: pulse 2s infinite;
-        }
-
-        .clicked-element {
-            background: linear-gradient(45deg, var(--success), #059669);
-            transform: scale(0.8);
-        }
-
-        .missed-element {
-            background: linear-gradient(45deg, var(--danger), #dc2626);
-            animation: shake 0.5s;
-        }
-
-        .game-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            background: rgba(15, 23, 42, 0.3);
             padding: 1rem;
+            background: rgba(15, 23, 42, 0.5);
             border-radius: 12px;
         }
 
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
-
-        .game-controls {
+        .tool-group {
             display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .tool-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            min-width: 80px;
+        }
+
+        .color-picker {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #6366f1;
+        }
+
+        .size-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .size-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.5);
+            color: #cbd5e1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .size-btn.active {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Canvas */
+        .canvas-container {
+            background: var(--grid-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            overflow: auto;
+            max-height: 500px;
+        }
+
+        .pixel-grid {
+            display: inline-grid;
+            gap: 1px;
+            background: rgba(148, 163, 184, 0.2);
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+
+        .pixel {
+            background: #0f172a;
+            cursor: pointer;
+            transition: background 0.1s ease;
+        }
+
+        .pixel:hover {
+            opacity: 0.8;
+        }
+
+        /* Controls */
+        .canvas-controls {
+            display: flex;
+            justify-content: center;
             gap: 1rem;
             margin-top: 1rem;
         }
 
-        .game-info {
+        /* Info */
+        .pixel-info {
             background: rgba(15, 23, 42, 0.3);
             padding: 1rem;
             border-radius: 12px;
-            margin-top: 1rem;
             font-size: 0.9rem;
             color: #94a3b8;
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
+            text-align: center;
         }
 
         /* Background Elements */
@@ -340,12 +326,12 @@
                 text-align: center;
             }
 
-            .game-section {
+            .pixel-art-section {
                 max-width: 100%;
             }
 
-            .game-screen {
-                height: 250px;
+            .canvas-container {
+                max-height: 400px;
             }
         }
 
@@ -354,14 +340,18 @@
                 font-size: 2rem;
             }
 
-            .game-screen {
-                height: 200px;
+            .tools {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .game-element {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+            .tool-group {
+                width: 100%;
+            }
+
+            .canvas-container {
+                max-height: 350px;
+                padding: 0.5rem;
             }
 
             .circle {
@@ -389,362 +379,267 @@
                 font-size: 1.3rem;
             }
 
-            .game-section {
+            .pixel-art-section {
                 padding: 1.5rem;
             }
 
-            .game-screen {
-                height: 180px;
+            .canvas-controls {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .game-controls {
-                flex-direction: column;
+            .cta-button {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .canvas-container {
+                max-height: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Simple Navbar -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">NamaDomain.com</div>
+        <div class="logo">rizkymaulana.web.id</div>
     </nav>
 
     <!-- Main Content -->
     <div class="container">
         <div class="bg-elements">
-            <div class="circle circle-1 floating"></div>
-            <div class="circle circle-2 floating" style="animation-delay: 1s;"></div>
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
         </div>
         
         <!-- Welcome Section -->
         <div class="welcome-section">
-            <h1>Selamat Datang di <span>NamaDomain</span></h1>
-            <p>Hubungi kami di email untuk mendapatkan akses ke subdomain platform kami. Sementara itu, nikmati mini game reaksi yang seru di samping!</p>
+            <h1>Buat <span>Pixel Art</span> Milikmu</h1>
+            <p>Hubungi kami di email untuk mendapatkan akses ke subdomain platform kami. Sementara itu, nikmati kreativitasmu dengan Pixel Art Maker di samping!</p>
             
             <div style="margin-top: 2rem;">
-                <a href="mailto:kontak@namadomain.com" class="cta-button">
+                <a href="mailto:support@rizkymaulana.web.id" class="cta-button">
                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                     Hubungi via Email
                 </a>
-                <a href="#" class="cta-button secondary">
-                    <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
-                    Tentang Kami
-                </a>
             </div>
-            
-            <p style="margin-top: 2rem; font-size: 1rem; color: #94a3b8;">
-                Atau kirim email ke: 
-                <a href="mailto:kontak@namadomain.com" class="email-link">
-                    kontak@namadomain.com
-                </a>
-            </p>
         </div>
 
-        <!-- Game Section -->
-        <div class="game-section">
-            <div class="game-header">
-                <h2>Reaction Game</h2>
-                <p>Uji kecepatan reaksimu! Klik lingkaran oranye secepat mungkin</p>
+        <!-- Pixel Art Section -->
+        <div class="pixel-art-section">
+            <div class="pixel-art-header">
+                <h2>Pixel Art Maker</h2>
+                <p>Gambar pixel art dan download hasilnya!</p>
             </div>
 
-            <div class="game-stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="score">0</div>
-                    <div class="stat-label">Skor</div>
+            <!-- Tools -->
+            <div class="tools">
+                <div class="tool-group">
+                    <span class="tool-label">Warna:</span>
+                    <input type="color" class="color-picker" id="colorPicker" value="#6366f1">
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="time">30</div>
-                    <div class="stat-label">Detik</div>
+                
+                <div class="tool-group">
+                    <span class="tool-label">Ukuran:</span>
+                    <div class="size-controls">
+                        <button class="size-btn active" data-size="16">16x16</button>
+                        <button class="size-btn" data-size="32">32x32</button>
+                        <button class="size-btn" data-size="64">64x64</button>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="accuracy">0%</div>
-                    <div class="stat-label">Akurasi</div>
-                </div>
-            </div>
-
-            <div class="game-screen" id="gameScreen">
-                <div class="start-screen" id="startScreen">
-                    <h3>Siap Bermain?</h3>
-                    <p>Klik tombol mulai dan klik lingkaran oranye secepat mungkin sebelum waktu habis!</p>
-                    <button class="cta-button" id="startBtn">
-                        <i class="fas fa-play"></i> Mulai Game
+                
+                <div class="tool-group">
+                    <button class="action-btn secondary" id="clearBtn">
+                        <i class="fas fa-eraser"></i> Clear
                     </button>
                 </div>
             </div>
 
-            <div class="game-controls">
-                <button class="cta-button secondary" id="pauseBtn" style="display: none;">
-                    <i class="fas fa-pause"></i> Jeda
-                </button>
-                <button class="cta-button secondary" id="resetBtn">
-                    <i class="fas fa-redo"></i> Reset
-                </button>
+            <!-- Canvas -->
+            <div class="canvas-container">
+                <div class="pixel-grid" id="pixelGrid"></div>
+                
+                <div class="canvas-controls">
+                    <button class="action-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> Download PNG
+                    </button>
+                    <button class="action-btn secondary" id="shareBtn">
+                        <i class="fas fa-share"></i> Bagikan
+                    </button>
+                </div>
             </div>
 
-            <div class="game-info">
-                <p><i class="fas fa-lightbulb" style="color: var(--warning); margin-right: 5px;"></i> Tips: Klik lingkaran oranye secepat mungkin untuk mendapatkan skor tinggi!</p>
+            <!-- Info -->
+            <div class="pixel-info">
+                <p><i class="fas fa-lightbulb" style="color: var(--warning); margin-right: 5px;"></i> Klik pixel untuk menggambar. Buat karya seni pixel milikmu!</p>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2023 NamaDomain. Hak Cipta Dilindungi.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #64748b;">
-            Halaman ini hanya sebagai informasi. Akses platform melalui email.
-        </p>
+        <p>&copy; 2023 rizkymaulana.web.id. Hak Cipta Dilindungi.</p>
     </footer>
 
     <script>
-        // Game Variables
-        let score = 0;
-        let timeLeft = 30;
-        let gameActive = false;
-        let gameInterval;
-        let timerInterval;
-        let totalClicks = 0;
-        let correctClicks = 0;
-        let currentElement = null;
+        // Pixel Art Variables
+        let gridSize = 16;
+        let currentColor = '#6366f1';
+        let isDrawing = false;
+        let gridElement = document.getElementById('pixelGrid');
+        let sizeButtons = document.querySelectorAll('.size-btn');
+        let colorPicker = document.getElementById('colorPicker');
+        let clearBtn = document.getElementById('clearBtn');
+        let downloadBtn = document.getElementById('downloadBtn');
+        let shareBtn = document.getElementById('shareBtn');
 
-        // DOM Elements
-        const gameScreen = document.getElementById('gameScreen');
-        const startScreen = document.getElementById('startScreen');
-        const startBtn = document.getElementById('startBtn');
-        const pauseBtn = document.getElementById('pauseBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const scoreEl = document.getElementById('score');
-        const timeEl = document.getElementById('time');
-        const accuracyEl = document.getElementById('accuracy');
-
-        // Initialize Game
-        function initGame() {
-            resetGame();
-        }
-
-        // Start Game
-        function startGame() {
-            if (gameActive) return;
+        // Initialize Pixel Grid
+        function initGrid() {
+            gridElement.innerHTML = '';
             
-            gameActive = true;
-            startScreen.style.display = 'none';
-            pauseBtn.style.display = 'block';
-            pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Jeda';
+            // Calculate pixel size based on grid size
+            let pixelSize;
+            if (gridSize <= 16) {
+                pixelSize = 20;
+            } else if (gridSize <= 32) {
+                pixelSize = 12;
+            } else {
+                pixelSize = 6;
+            }
             
-            // Start timer
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                timeEl.textContent = timeLeft;
-                
-                if (timeLeft <= 0) {
-                    endGame();
-                }
-            }, 1000);
+            // Set grid template
+            gridElement.style.gridTemplateColumns = `repeat(${gridSize}, ${pixelSize}px)`;
+            gridElement.style.gridTemplateRows = `repeat(${gridSize}, ${pixelSize}px)`;
             
-            // Start spawning elements
-            spawnElement();
-        }
-
-        // Pause Game
-        function pauseGame() {
-            if (!gameActive) return;
-            
-            gameActive = false;
-            clearInterval(timerInterval);
-            pauseBtn.innerHTML = '<i class="fas fa-play"></i> Lanjut';
-            pauseBtn.onclick = resumeGame;
-        }
-
-        // Resume Game
-        function resumeGame() {
-            if (gameActive) return;
-            
-            gameActive = true;
-            pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Jeda';
-            pauseBtn.onclick = pauseGame;
-            
-            // Resume timer
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                timeEl.textContent = timeLeft;
-                
-                if (timeLeft <= 0) {
-                    endGame();
-                }
-            }, 1000);
-        }
-
-        // Reset Game
-        function resetGame() {
-            gameActive = false;
-            clearInterval(gameInterval);
-            clearInterval(timerInterval);
-            
-            score = 0;
-            timeLeft = 30;
-            totalClicks = 0;
-            correctClicks = 0;
-            
-            scoreEl.textContent = score;
-            timeEl.textContent = timeLeft;
-            accuracyEl.textContent = '0%';
-            
-            startScreen.style.display = 'block';
-            pauseBtn.style.display = 'none';
-            
-            // Remove any existing elements
-            if (currentElement) {
-                currentElement.remove();
-                currentElement = null;
+            // Create pixels
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                pixel.style.width = `${pixelSize}px`;
+                pixel.style.height = `${pixelSize}px`;
+                pixel.addEventListener('mousedown', startDrawing);
+                pixel.addEventListener('mouseenter', draw);
+                pixel.addEventListener('mouseup', stopDrawing);
+                gridElement.appendChild(pixel);
             }
         }
 
-        // Spawn Game Element
-        function spawnElement() {
-            if (!gameActive) return;
-            
-            // Remove previous element
-            if (currentElement) {
-                currentElement.remove();
-            }
-            
-            // Create new element
-            currentElement = document.createElement('div');
-            currentElement.className = 'game-element ready-element floating';
-            currentElement.innerHTML = '<i class="fas fa-bullseye"></i>';
-            
-            // Random position
-            const maxX = gameScreen.offsetWidth - 80;
-            const maxY = gameScreen.offsetHeight - 80;
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-            
-            currentElement.style.left = `${randomX}px`;
-            currentElement.style.top = `${randomY}px`;
-            
-            // Add click event
-            currentElement.addEventListener('click', handleElementClick);
-            
-            gameScreen.appendChild(currentElement);
-            
-            // Auto remove after delay
-            setTimeout(() => {
-                if (currentElement && currentElement.parentNode) {
-                    currentElement.className = 'game-element missed-element';
-                    setTimeout(() => {
-                        if (currentElement && currentElement.parentNode) {
-                            currentElement.remove();
-                            currentElement = null;
-                            if (gameActive) {
-                                spawnElement();
-                            }
-                        }
-                    }, 500);
-                }
-            }, 1500);
-            
-            // Spawn next element
-            gameInterval = setTimeout(() => {
-                if (gameActive) {
-                    spawnElement();
-                }
-            }, Math.random() * 1000 + 500);
+        // Drawing Functions
+        function startDrawing(e) {
+            isDrawing = true;
+            draw(e);
         }
 
-        // Handle Element Click
-        function handleElementClick() {
-            if (!gameActive) return;
-            
-            totalClicks++;
-            correctClicks++;
-            
-            // Update element appearance
-            currentElement.className = 'game-element clicked-element';
-            currentElement.innerHTML = '<i class="fas fa-check"></i>';
-            
-            // Increase score
-            score += 10;
-            scoreEl.textContent = score;
-            
-            // Update accuracy
-            const accuracy = Math.round((correctClicks / totalClicks) * 100);
-            accuracyEl.textContent = `${accuracy}%`;
-            
-            // Remove element after delay
-            setTimeout(() => {
-                if (currentElement && currentElement.parentNode) {
-                    currentElement.remove();
-                    currentElement = null;
-                    if (gameActive) {
-                        spawnElement();
-                    }
-                }
-            }, 200);
+        function draw(e) {
+            if (!isDrawing) return;
+            if (e.target.classList.contains('pixel')) {
+                e.target.style.backgroundColor = currentColor;
+            }
         }
 
-        // End Game
-        function endGame() {
-            gameActive = false;
-            clearInterval(timerInterval);
-            clearInterval(gameInterval);
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        // Change Grid Size
+        function changeGridSize(size) {
+            gridSize = parseInt(size);
+            initGrid();
             
-            // Remove current element
-            if (currentElement) {
-                currentElement.remove();
-                currentElement = null;
-            }
-            
-            // Show game over message
-            const gameOverScreen = document.createElement('div');
-            gameOverScreen.className = 'start-screen';
-            gameOverScreen.innerHTML = `
-                <h3>Game Selesai!</h3>
-                <p>Skor Akhirmu: <span style="color: var(--primary); font-weight: bold;">${score}</span></p>
-                <p>${getScoreMessage(score)}</p>
-                <button class="cta-button" id="playAgainBtn">
-                    <i class="fas fa-redo"></i> Main Lagi
-                </button>
-            `;
-            
-            gameScreen.appendChild(gameOverScreen);
-            
-            // Add event listener to play again button
-            document.getElementById('playAgainBtn').addEventListener('click', () => {
-                gameOverScreen.remove();
-                resetGame();
-                startGame();
+            // Update active button
+            sizeButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.size === size) {
+                    btn.classList.add('active');
+                }
             });
         }
 
-        // Get Score Message
-        function getScoreMessage(score) {
-            if (score >= 200) {
-                return "Luar Biasa! Reaksi super cepat! 🚀";
-            } else if (score >= 150) {
-                return "Hebat! Kecepatan reaksimu sangat baik! ⚡";
-            } else if (score >= 100) {
-                return "Bagus! Terus tingkatkan kecepatanmu! 💪";
-            } else if (score >= 50) {
-                return "Cukup baik! Latih lagi untuk skor yang lebih tinggi! 🎯";
+        // Clear Canvas
+        function clearCanvas() {
+            const pixels = document.querySelectorAll('.pixel');
+            pixels.forEach(pixel => {
+                pixel.style.backgroundColor = '';
+            });
+        }
+
+        // Download as PNG
+        function downloadPixelArt() {
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const pixelSize = 10;
+            
+            canvas.width = gridSize * pixelSize;
+            canvas.height = gridSize * pixelSize;
+            
+            // Fill with dark background
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw pixels
+            const pixels = document.querySelectorAll('.pixel');
+            for (let i = 0; i < pixels.length; i++) {
+                const pixel = pixels[i];
+                const x = (i % gridSize) * pixelSize;
+                const y = Math.floor(i / gridSize) * pixelSize;
+                
+                if (pixel.style.backgroundColor) {
+                    ctx.fillStyle = pixel.style.backgroundColor;
+                } else {
+                    ctx.fillStyle = '#0f172a';
+                }
+                
+                ctx.fillRect(x, y, pixelSize, pixelSize);
+            }
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = 'pixel-art.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Share Function
+        function sharePixelArt() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Pixel Art Saya',
+                    text: 'Lihat pixel art keren yang saya buat!',
+                    url: window.location.href
+                }).catch(console.error);
             } else {
-                return "Jangan menyerah! Coba lagi untuk hasil yang lebih baik! 🌟";
+                alert('Fitur share tidak tersedia di browser Anda. Gunakan tombol Download PNG untuk menyimpan karya Anda.');
             }
         }
 
         // Event Listeners
-        startBtn.addEventListener('click', startGame);
-        pauseBtn.addEventListener('click', pauseGame);
-        resetBtn.addEventListener('click', resetGame);
+        sizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                changeGridSize(btn.dataset.size);
+            });
+        });
 
-        // Initialize game when page loads
-        document.addEventListener('DOMContentLoaded', initGame);
+        colorPicker.addEventListener('input', (e) => {
+            currentColor = e.target.value;
+        });
 
-        // Handle accidental clicks on game screen
-        gameScreen.addEventListener('click', (e) => {
-            if (gameActive && e.target === gameScreen) {
-                totalClicks++;
-                const accuracy = Math.round((correctClicks / totalClicks) * 100);
-                accuracyEl.textContent = `${accuracy}%`;
-            }
+        clearBtn.addEventListener('click', clearCanvas);
+        downloadBtn.addEventListener('click', downloadPixelArt);
+        shareBtn.addEventListener('click', sharePixelArt);
+
+        // Prevent dragging
+        gridElement.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+        });
+
+        // Stop drawing when mouse leaves canvas
+        document.addEventListener('mouseup', stopDrawing);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initGrid();
         });
     </script>
 </body>
